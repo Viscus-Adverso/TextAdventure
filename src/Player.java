@@ -13,6 +13,7 @@ public class Player {
     }
 
     void chooseWeapon() {
+        //chooseWeapon(); <--bad recursion, becomes a stack overflow
         System.out.println("Do you want a sword or mace");
         weapon = Game.scanner.nextLine();
 
@@ -23,7 +24,7 @@ public class Player {
             System.out.printf("Here is your mace!");
         }
         else {
-            //throw new Exception("Invalid weapon.");
+            //throw new Exception("Invalid weapon.");  <---crashes the game on a wrong choice
             System.out.println("Weapon not recognized");
             chooseWeapon();
         }

@@ -9,11 +9,23 @@ public class Game {
     public static void main(String[] args) throws Exception {
         System.out.println("Welcome, traveller!");
 
-        Player player = new Player();
-        player.chooseName();
-        player.chooseWeapon();
-        player.chooseLocation();
+        boolean keepRunning = true;
 
+        while (keepRunning) {
+            Player player = new Player();
+            player.chooseName();
+            player.chooseWeapon();
+            player.chooseLocation();
 
+            System.out.println("You win!");
+            System.out.println("Would you like to play again? Type y or n");
+
+            String answer = scanner.nextLine();
+            if (answer.equalsIgnoreCase("n")){
+                keepRunning = false;
+            }
+        }
+
+        System.out.println("Game over.");
     }
 }

@@ -11,14 +11,14 @@ public class Player {
 
     void chooseName() {
         System.out.println("What is your name?");
-        name = Game.scanner.nextLine();
+        name = Game.customLine();
         System.out.println("Welcome," + name);
     }
 
     void chooseWeapon() {
         //chooseWeapon(); <--bad recursion, becomes a stack overflow
         System.out.println("Do you want a sword or mace");
-        weapon = Game.scanner.nextLine();
+        weapon = Game.customLine();
 
         if (weapon.equalsIgnoreCase("sword")){
             System.out.println("Here is your sword!");
@@ -34,7 +34,7 @@ public class Player {
     }
     void chooseLocation() {
         System.out.println("Would you like to go to the tunnel or the forest?");
-        location = Game.scanner.nextLine();
+        location = Game.customLine();
 
         if (location.equalsIgnoreCase("tunnel")) {
             System.out.println("Entering tunnel...");
@@ -50,7 +50,7 @@ public class Player {
 
     void findItem(String item) {
         System.out.println("You Found a " + item+ "! Press y to pick up.");
-        String answer = Game.scanner.nextLine();
+        String answer = Game.customLine();
         if (answer.equalsIgnoreCase("y")) {
             items.add(item);
             System.out.println("You picked" + item+ "up, it has been added to your inventory.");

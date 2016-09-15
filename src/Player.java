@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by Viscus on 9/14/16.
  */
@@ -5,6 +7,7 @@ public class Player {
     String name;
     String weapon;
     String location;
+    ArrayList<String> items = new ArrayList<>();
 
     void chooseName() {
         System.out.println("What is your name?");
@@ -42,6 +45,15 @@ public class Player {
         else {
             System.out.println("Location not recognized");
             chooseLocation();
+        }
+    }
+
+    void findItem(String item) {
+        System.out.println("You Found a " + item+ "! Press y to pick up.");
+        String answer = Game.scanner.nextLine();
+        if (answer.equalsIgnoreCase("y")) {
+            items.add(item);
+            System.out.println("You picked" + item+ "up, it has been added to your inventory.");
         }
     }
 }

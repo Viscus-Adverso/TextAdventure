@@ -16,6 +16,8 @@ public class Game {
             player.chooseName();
             player.chooseWeapon();
             player.chooseLocation();
+            player.findItem("shield");
+            player.findItem("potion");
 
             System.out.println("You win!");
             System.out.println("Would you like to play again? Type y or n");

@@ -24,4 +24,16 @@ public class Character {
             System.out.printf("%s has died\n", enemy.health);
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
 }

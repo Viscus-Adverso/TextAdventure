@@ -58,10 +58,13 @@ public class Game {
                     }
                     break;
                 case "/save":
-                    save();
+                    save(player, FILE_NAME);
                     break;
                 case "/load":
-                    load();
+                    Player p = load(FILE_NAME);
+                    if (p != null) {
+                        player =p;
+                    }
                     break;
                 default:
                     System.out.println("Invalid command!");
@@ -74,10 +77,10 @@ public class Game {
     }
 
 
-    static void save() {
+    static void save(Player player, String fileName) {
         JsonSerializer serializer = new JsonSerializer();
         String json = serializer.deep(true).serialize(player);
-        File f = new File(FILE_NAME);
+        File f = new File(fileName);
         try {
             FileWriter fw = new FileWriter(f);
             fw.write(json);
@@ -87,17 +90,19 @@ public class Game {
         }
     }
 
-    static void load() {
-        File f = new File(FILE_NAME);
+    static Player load(String fileName) {
+        File f = new File(fileName);
         try {
             FileReader fr = new FileReader(f);
             int fileSize = (int) f.length();
             char[] contents = new char[fileSize];
             fr.read(contents, 0, fileSize);
             JsonParser parser = new JsonParser();
-            player = parser.parse(contents, Player.class);
+            return parser.parse(contents, Player.class);
         } catch (Exception e) {
             System.out.println("Couldn't load file.");
+            e.printStackTrace();
+            return null;
         }
     }
 }
